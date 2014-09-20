@@ -23,6 +23,12 @@
 
   <!-- in-house -->
   <script src="{{url_for('static', filename='js/map.js')}}"></script>
+  {% if not itinerary %}
   <script src="{{url_for('static', filename='js/place_list.js')}}"></script>
+  {% else %}
+  <script>
+    
+  </script>
+  {% endif %}
 </body>
 </html>
