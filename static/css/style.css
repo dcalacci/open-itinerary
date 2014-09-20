@@ -17,8 +17,8 @@ html, body {
     width: 30%;
     top: 10px;
     right: 10px;
-    background-color: rgba(249, 249, 249, 0.5);
-    z-index: 11;
+    background-color: rgba(239, 239, 239, 0.61);
+    z-index: 100;
 }
 
 #itinerary-title {
