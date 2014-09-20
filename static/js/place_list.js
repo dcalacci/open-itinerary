@@ -4,16 +4,16 @@
 function updatePlaceList(parseid) {
     placeList = $('ul#place-list')
     $.get('/itinerary/' + parseid,
-          function(data) {
-              console.log("received list of places:");
-              console.log(data);
-              var places = data['itinerary'];
-              for(i in places) {
-                  console.log(places[i].name);
-                  placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '</li>');
-                  addPlaceToMap(places[i], (parseInt(i)+1));
-              }
-          });
+        function(data) {
+            console.log("received list of places:");
+            console.log(data);
+            var places = data['itinerary'];
+            for(i in places) {
+                console.log(places[i].name);
+                placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '</li>');
+                addPlaceToMap(places[i], (parseInt(i)+1), true);
+            }
+        });
 }
 
 
@@ -46,15 +46,19 @@ $(document).ready(function() {
                 map.removeLayer(placesLayer);
                 console.log("removed layer")
                 placesLayer = new L.FeatureGroup();
+                //placesLayer.eachLayer(function(marker) {
+                    //marker._icon.textContent = "5"
+                    //console.log("THE MARKERS")
+                    //console.log(marker);
+                //});
                 map.addLayer(placesLayer);
                 console.log("added new layer")
-                //placesLayer.clearLayers();
+                placesLayer.clearLayers();
                 var places = itin['itinerary'];
                 for (i in places) {
-                  addPlaceToMap(places[i], (parseInt(i)+1));
+                  addPlaceToMap(places[i], (parseInt(i)+1), false);
                 }
-                 
-
+                //map.fitBounds(placesLayer.getBounds());
                 
             }
         }

@@ -50,6 +50,7 @@
            $('input[name="search"]').val(), {
         }, function(data) {
           placeList = $('ul#place-list');
+          liList = $('li.place-item');
 
           var newName = Object.keys(data)[0];
           var newData = data[newName];
@@ -64,7 +65,7 @@
           placeList.append("<li data-json='" + JSON.stringify(jsonArr) + "' class='place-item'>" + newName + '</li>');
           var newMarker = newData;
           newMarker['name'] = newName;
-          addPlaceToMap(newMarker);
+          addPlaceToMap(newMarker, parseInt(liList.length)+1, true);
 
           var url = document.URL;
           if (url.indexOf("/id/") > -1) {

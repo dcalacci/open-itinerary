@@ -60,13 +60,17 @@ function popupForPlace(place) {
 
 // adds a given place to the leaflet map as a marker on the 'places' layer.
 // also sets the zoom level / bounding box around existing points
-function addPlaceToMap(place, num) {
+function addPlaceToMap(place, num, redraw) {
     console.log("adding marker: " + popupForPlace(place))
     //var marker = L.marker([place['lat'], place['lon']]);
+    console.log("num:")
+    console.log(num)
     var marker = new L.marker(new L.LatLng(place['lat'], place['lon']), {
         icon: new L.NumberedDivIcon({number: num.toString()})
     });
     marker.bindPopup(popupForPlace(place));
     placesLayer.addLayer(marker);
-    map.fitBounds(placesLayer.getBounds());
+    if (redraw) {
+        map.fitBounds(placesLayer.getBounds());
+    }
 }
