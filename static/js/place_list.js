@@ -42,6 +42,20 @@ $(document).ready(function() {
                     console.log("Saved new itinerary order");
                     console.log(data);
                 }, "json");
+                // redraw markers
+                map.removeLayer(placesLayer);
+                console.log("removed layer")
+                placesLayer = new L.FeatureGroup();
+                map.addLayer(placesLayer);
+                console.log("added new layer")
+                //placesLayer.clearLayers();
+                var places = itin['itinerary'];
+                for (i in places) {
+                  addPlaceToMap(places[i], (parseInt(i)+1));
+                }
+                 
+
+                
             }
         }
     });
