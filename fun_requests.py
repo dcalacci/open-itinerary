@@ -1,4 +1,5 @@
 import requests
+import json
 
 # returns a dict {lat, lon, place_id}
 def get_info_from_address(address):
@@ -9,7 +10,7 @@ def get_info_from_address(address):
 			, 'lon': info[u'lon']
 			, 'place_id': info[u'place_id']
 			}
-	return geo
+	return json.dumps(geo, ensure_ascii=False)
 
 # returns a dict {lat, lon, place_id}
 def get_info_from_name_and_zip(name, zipcode):
@@ -39,3 +40,12 @@ def get_info_from_many_names_and_zips(names_and_zips):
 		res[n['name']] = geo
 
 	return res
+
+def zipcode_and_addresses(zipcode, addresses):
+	res = {}
+	addresses = addresses.split(",")
+	for a in addresses:
+		info = get_info_from_name_and_zip(a, zipcode)
+		res[a] = info
+
+	return json.dumps(res, ensure_ascii=False)
