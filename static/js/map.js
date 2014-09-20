@@ -2,6 +2,7 @@
 
 var map = L.map('map').setView([51.505, -0.09], 13);
 
+// add mapbox tile layer
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 		maxZoom: 18,
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -10,30 +11,24 @@ L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 		id: 'examples.map-i875mjb7'
 }).addTo(map);
 
+// add our places layer.
 
-L.marker([51.5, -0.09]).addTo(map)
-		.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-
-L.circle([51.508, -0.11], 500, {
-		color: 'red',
-		fillColor: '#f03',
-		fillOpacity: 0.5
-}).addTo(map).bindPopup("I am a circle.");
-
-L.polygon([
-		[51.509, -0.08],
-		[51.503, -0.06],
-		[51.51, -0.047]
-]).addTo(map).bindPopup("I am a polygon.");
+var placesLayer = new L.FeatureGroup();
+map.addLayer(placesLayer);
 
 
-var popup = L.popup();
-
-function onMapClick(e) {
-		popup
-				.setLatLng(e.latlng)
-				.setContent("You clicked the map at " + e.latlng.toString())
-				.openOn(map);
+// popup DOM for a particular place. HTML with name, description, etc.
+function popupForPlace(place) {
+    return "<span id='place-name'>" + place['name'] + "</span><br/>"
 }
 
-map.on('click', onMapClick);
+
+// adds a given place to the leaflet map as a marker on the 'places' layer.
+// also sets the zoom level / bounding box around existing points
+function addPlaceToMap(place) {
+    console.log("adding marker: " + popupForPlace(place))
+    var marker = L.marker([place['lat'], place['lon']]);
+    marker.bindPopup(popupForPlace(place));
+    placesLayer.addLayer(marker);
+    map.fitBounds(placesLayer.getBounds());
+}

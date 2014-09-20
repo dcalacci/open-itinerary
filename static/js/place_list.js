@@ -1,18 +1,5 @@
 // js for place listing
 
-
-// popup DOM for a particular place. HTML with name, description, etc.
-function popupForPlace(place) {
-  return "<span id='place-name'>" + place['name'] + "</span><br/>"
-}
-
-// adds a given place to the leaflet map as a marker
-// TODO: give it an alphabetical or numerical ID
-function addPlaceToMap(place) {
-    console.log("adding marker: " + popupForPlace(place))
-    L.marker([place['lat'], place['lon']]).addTo(map).bindPopup(popupForPlace(place))
-}
-
 // updates the place list for the given parseid
 function updatePlaceList(parseid) {
     placeList = $('ul#place-list')
@@ -28,6 +15,7 @@ function updatePlaceList(parseid) {
               }
           });
 }
+
 
 $(document).ready(function() {
     // TODO: change this hardcoded ID to be dynamic
