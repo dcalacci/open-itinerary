@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 <<<<<<< HEAD
 import requests
@@ -9,6 +10,10 @@ from flask import *
 import fun_requests as f
 >>>>>>> APP
 >>>>>>> APP
+=======
+from flask import *
+import fun_requests as f
+>>>>>>> BEtter
 app = Flask(__name__)
 app.config.from_object('config')
 
