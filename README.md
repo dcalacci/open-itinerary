@@ -1,7 +1,7 @@
 nu-unhackathon
 ==============
 
-itinerary stuff! yeah bitch, magnets!
+literally just a repo of merge conflicts
 
 
 ## backend
