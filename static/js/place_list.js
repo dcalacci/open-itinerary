@@ -30,7 +30,9 @@ function updatePlaceList(parseid) {
 
 
 $(document).ready(function() {
-    updatePlaceList('Mw3O68vpF8');
+    {% if itinerary %}
+    updatePlaceList({% itinerary %});
+    {% endif %}
     $("ul#place-list").sortable({
         opacity: 0.6,
         cursor: 'move'

@@ -7,6 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{url_for('static', filename='css/external/leaflet.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  <script type="text/javascript">
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  </script>
 </head>
 <body>
 
@@ -18,6 +21,13 @@
     <ul id="place-list"></ul>
   </div>
 
+  <div id="search" style="text-align:center;">
+    <span id="itinerary-title">Search</span>
+    <br />
+    <input type="text" name="search" />
+    <button id="search-button">Click!</button>
+  </div>
+
   <!-- external javascript -->
   <script src="{{url_for('static', filename='js/external/jquery.min.js')}}"></script>
   <script src="{{url_for('static', filename='js/external/jquery-ui.min.js')}}"></script>
@@ -26,5 +36,28 @@
   <!-- in-house -->
   <script src="{{url_for('static', filename='js/map.js')}}"></script>
   <script src="{{url_for('static', filename='js/place_list.js')}}"></script>
+
+  <script>
+    if (document.cookie === '') {
+      var zipcode = prompt("Please enter your zipcode.", "xxxxx");
+      document.cookie = zipcode;
+    } 
+
+    $(function() {
+      $('#search-button').bind('click', function() {
+        $.getJSON($SCRIPT_ROOT + '/location/' + document.cookie + '/' + 
+           $('input[name="search"]').val(), {
+        }, function(data) {
+          $("#result").html(JSON.stringify(data));
+          placeList = $('ul#place-list');
+          placeList.append("<li class='place-item'>" + Object.keys(data)[0] + '</li>');
+          var newMarker = data[Object.keys(data)[0]];
+          newMarker['name'] = Object.keys(data)[0];
+          addPlaceToMap(newMarker);
+        });
+        return false;
+      });
+    });
+  </script>
 </body>
 </html>

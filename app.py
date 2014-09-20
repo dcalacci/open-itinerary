@@ -31,6 +31,18 @@ def get_itinerary(parseid):
 
     return jsonify(itinerary=r.json()['itinerary'])
 
+@app.route('/id/<parseid>', methods=['GET'])
+def get_id(parseid):
+    """Gets the itinerary for a given parseid.
+
+    returns:
+        { "itinerary": [ { "id": "abcdefg", "lat": 12.34, "lon": 34.56, "name": "test" } ] }
+    """
+    r = requests.get('https://api.parse.com/1/classes/Itinerary/{}'.format(parseid),
+                     headers=app.config['PARSE_HEADERS'])
+
+    return render_template('index.html', id=jsonify(itinerary=r.json()['itinerary']['id']))
+
 
 @app.route('/itinerary/<parseid>', methods=['POST'])
 def update_itinerary(parseid):
