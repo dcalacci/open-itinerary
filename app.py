@@ -1,19 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-from flask import Flask, render_template, request, redirect, url_for, jsonify
-<<<<<<< HEAD
-import requests
-
-=======
-=======
 from flask import *
 import fun_requests as f
->>>>>>> APP
->>>>>>> APP
-=======
-from flask import *
-import fun_requests as f
->>>>>>> BEtter
 app = Flask(__name__)
 app.config.from_object('config')
 
@@ -56,7 +42,6 @@ def update_itinerary(parseid):
 def hello():
     return render_template('index.html')
 
-<<<<<<< HEAD
 # test points
 
 test_itinerary = [{'id': 'osmapid1',
@@ -80,7 +65,6 @@ def test_get_itinerary():
     print jsonify({'res': test_itinerary})
     return jsonify({'res': test_itinerary})
 
-=======
 @app.route("/homepage")
 def go():
     return render_template('homepage.html')
@@ -88,7 +72,6 @@ def go():
 @app.route("/location/<zipcode>/<addresses>")
 def loc(zipcode, addresses):
     return f.zipcode_and_addresses(zipcode, addresses)
->>>>>>> APP
 
 if __name__ == "__main__":
     app.run(debug=True)
