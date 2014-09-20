@@ -3,12 +3,13 @@
 
 // popup DOM for a particular place. HTML with name, description, etc.
 function popupForPlace(place) {
-  "<span id='place-name'>" + place['name'] + "</span><br/>"
+  return "<span id='place-name'>" + place['name'] + "</span><br/>"
 }
 
 // adds a given place to the leaflet map as a marker
 // TODO: give it an alphabetical or numerical ID
 function addPlaceToMap(place) {
+    console.log("adding marker: " + popupForPlace(place))
     L.marker([place['lat'], place['lon']]).addTo(map).bindPopup(popupForPlace(place))
 }
 
@@ -27,7 +28,6 @@ function updatePlaceList(parseid) {
               }
           });
 }
-
 
 $(document).ready(function() {
     updatePlaceList('Mw3O68vpF8');

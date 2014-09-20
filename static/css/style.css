@@ -33,4 +33,7 @@ html, body {
 .place-item {
     padding-top: 5px;
     padding-bottom: 5px;
+    border-top: 1px;
+    list-style-position:inside;
+    border-bottom: 1px solid rgba(33, 33, 33, 0.61);
 }
