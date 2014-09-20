@@ -4,6 +4,12 @@ import requests
 app = Flask(__name__)
 app.config.from_object('config')
 
+@app.route('/itinerary/create', methods=['POST'])
+def create_itinerary():
+    r = requests.post('https://api.parse.com/1/classes/Itinerary',
+            headers=app.config['PARSE_HEADERS'], data=request.get_data())
+    return jsonify(r.json())
+
 # returns:
 # { "itinerary": [ { "id": "abcdefg", "lat": 12.34, "lon": 34.56, "name": "test" } ] }
 @app.route('/itinerary/<parseid>', methods=['GET'])
