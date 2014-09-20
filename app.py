@@ -28,8 +28,8 @@ def get_itinerary(parseid):
     """
     r = requests.get('https://api.parse.com/1/classes/Itinerary/{}'.format(parseid),
                      headers=app.config['PARSE_HEADERS'])
-    return render_template('index.html',
-                           itinerary=jsonify(itinerary=r.json()['itinerary']))
+
+    return jsonify(itinerary=r.json()['itinerary'])
 
 
 @app.route('/itinerary/<parseid>', methods=['POST'])
