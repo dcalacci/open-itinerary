@@ -39,7 +39,7 @@ def update_itinerary(parseid):
     return jsonify(r.json())
 
 
-@app.route('/')
+@app.route("/")
 def hello():
     return render_template('index.html')
 
