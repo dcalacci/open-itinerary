@@ -1,0 +1,33 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<script type="text/javascript">
+  $(function() {
+    $('#send').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/location/' + $('input[name="location_zip"]').val() + '/' + $('textarea[name="locs"]').val(), {
+      }, function(data) {
+        $("#result").html(JSON.stringify(data));
+      });
+      return false;
+    });
+  });
+</script>
+
+<h3>Where are you gonna be? (enter a zipcode)</h3>
+<input type="text" name="location_zip" />
+<br />
+<br />
+<br />
+<h3>What are some places you want to visit? (comma separated)</h3>
+<textarea cols="50" rows="50" name="locs"></textarea>
+<br />
+<br />
+<button id="send">Click to get some DATA</button>
+<br />
+<br />
+<br />
+
+<div id="result">
+----DATA WILL GO HERE----
+</div>
