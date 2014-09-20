@@ -41,7 +41,7 @@ def get_id(parseid):
     r = requests.get('https://api.parse.com/1/classes/Itinerary/{}'.format(parseid),
                      headers=app.config['PARSE_HEADERS'])
 
-    return render_template('index.html', id=jsonify(itinerary=r.json()['itinerary']['id']))
+    return render_template('index.html')
 
 
 @app.route('/itinerary/<parseid>', methods=['POST'])
