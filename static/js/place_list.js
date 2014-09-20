@@ -11,14 +11,13 @@ function updatePlaceList(parseid) {
               for(i in places) {
                   console.log(places[i].name);
                   placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '</li>');
-                  addPlaceToMap(places[i]);
+                  addPlaceToMap(places[i], (parseInt(i)+1));
               }
           });
 }
 
 
 $(document).ready(function() {
-    // TODO: change this hardcoded ID to be dynamic
     var url = document.URL;
     if (url.indexOf("/id/") > -1) {
         url = url.split('/');
