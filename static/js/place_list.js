@@ -23,16 +23,33 @@ function updatePlaceList(parseid) {
               var places = data['itinerary'];
               for(i in places) {
                   console.log(places[i].name);
-                  placeList.append("<li class='place-item'>" + places[i].name + '</li>');
+                  placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '</li>');
                   addPlaceToMap(places[i]);
               }
           });
 }
 
 $(document).ready(function() {
+    // TODO: change this hardcoded ID to be dynamic
+    var testId = 'Mw3O68vpF8';
     updatePlaceList('Mw3O68vpF8');
     $("ul#place-list").sortable({
         opacity: 0.6,
-        cursor: 'move'
+        cursor: 'move',
+        // save itinerary when user reorders list
+        update: function( event, ui ) {
+            var itin = {"itinerary" : []};
+            $("ul#place-list").each(function( index ) {
+                $(this).find("li").each(function(){
+                    console.log($(this).data("json"));
+                    itin.itinerary.push($(this).data("json"));
+                });
+            });
+            console.log(itin);
+            $.post("/itinerary/" + testId, JSON.stringify(itin, function(data) {
+                console.log("Saved new itinerary order")
+                console.log(data);
+            }, "json");
+        }
     });
 });
