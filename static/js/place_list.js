@@ -21,7 +21,11 @@ $(document).ready(function() {
 
     $("ul#place-list").sortable({
         opacity: 0.6,
-        cursor: 'move'
+        cursor: 'move',
+        // save itinerary when user reorders list
+        update: function( event, ui ) {
+            console.log("got event");
+        }
     });
 
 });
