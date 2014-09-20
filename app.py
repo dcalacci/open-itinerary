@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import *
+import fun_requests as f
 import requests
 
 app = Flask(__name__)
@@ -18,7 +19,7 @@ def create_itinerary():
 def get_itinerary(parseid):
     r = requests.get('https://api.parse.com/1/classes/Itinerary/{}'.format(parseid),
             headers=app.config['PARSE_HEADERS'])
-    return jsonify(itinerary=r.json()['itinerary'])
+    return render_template('index.html', itinerary=jsonify(itinerary=r.json()['itinerary']))
 
 # requires JSON to be posted in the following format:
 '''
@@ -66,6 +67,13 @@ def test_get_itinerary():
     print jsonify({'res': test_itinerary})
     return jsonify({'res': test_itinerary})
 
+@app.route("/homepage")
+def go():
+    return render_template('homepage.html')
+
+@app.route("/location/<zipcode>/<addresses>")
+def loc(zipcode, addresses):
+    return f.zipcode_and_addresses(zipcode, addresses)
 
 if __name__ == "__main__":
     app.run(debug=True)

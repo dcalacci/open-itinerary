@@ -2,8 +2,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 #map {
@@ -11,18 +10,27 @@ html, body {
     height: 100%;
 }
 
-#itinerary-list {
+#itinerary {
     position:absolute;
     min-height: 80%;
     width: 30%;
     top: 10px;
     right: 10px;
     background-color: rgba(239, 239, 239, 0.61);
-    z-index: 100;
+    z-index: 11;
 }
 
 #itinerary-title {
     padding-left: 10px;
     font-size: 3em;
     font-weight: 100;
+}
+
+#place-list {
+    list-style-type: none;
+}
+
+.place-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
