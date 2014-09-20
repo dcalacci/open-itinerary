@@ -46,8 +46,8 @@ $(document).ready(function() {
                 });
             });
             console.log(itin);
-            $.post("/itinerary/" + testId, JSON.stringify(itin, function(data) {
-                console.log("Saved new itinerary order")
+            $.post("/itinerary/" + testId, JSON.stringify(itin), function(data) {
+                console.log("Saved new itinerary order");
                 console.log(data);
             }, "json");
         }
