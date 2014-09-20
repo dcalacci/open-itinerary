@@ -12,11 +12,17 @@
 	<div id="map">
     <div id="itinerary-list">
       <span id="itinerary-title">Places</span>
+      <ul id="place-list"></ul>
     </div>
   </div>
 
-  <!-- javascript -->
-  <script src="{{url_for('static', filename='bower_components/leaflet/dist/leaflet.js')}}"></script>
+  <!-- external javascript -->
+  <script src="{{url_for('static', filename='js/external/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/external/jquery-ui.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/external/leaflet.js')}}"></script>
+
+  <!-- in-house -->
   <script src="{{url_for('static', filename='js/map.js')}}"></script>
+  <script src="{{url_for('static', filename='js/place_list.js')}}"></script>
 </body>
 </html>
