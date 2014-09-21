@@ -23,8 +23,6 @@ function isRoutingLayer(layer) {
 
 function removePointsFromRoutingLayer(layer) {
     var layer = layer;
-    console.log(layer);
-    console.log('---');
     keepLayers = [];
     layer.eachLayer(function(layer) {
         if (!('_latlng' in layer)) {
@@ -33,8 +31,6 @@ function removePointsFromRoutingLayer(layer) {
     });
     delete layer['_layers'];
     layer['_layers'] = keepLayers;
-    console.log(keepLayers);
-    console.log(layer);
     return layer;
 }
 
@@ -70,7 +66,22 @@ function drawPlaceRoute() {
     control.addTo(map);
     // control.spliceWaypoints(0, points.length);
     // routeline = L.Routing.line(routes[0]);
-    console.log("map:");
-    console.log(map);
+    // console.log("map:");
+    // console.log(map);
 
+    console.log('route?');
+    console.log(L.Routing.plan);
+}
+
+
+
+// permutes a list
+function permute(l) {
+    permutations = []
+    for (var i = 0; i < l.length; i++) {
+        for (var j = i+1; j < l.length; j++) {
+            permutations.push([l[i], l[j]])
+        }
+    }
+    return permutations
 }

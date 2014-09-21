@@ -2,7 +2,7 @@ import requests
 import json
 
 
-def get_foursquare_venues(lat, lon, radius=100, section='topPicks'):
+def get_foursquare_venues(lat, lon, radius, section='topPicks'):
     data = requests.get('https://api.foursquare.com/v2/venues/explore',
                         params={'ll': '{0},{1}'.format(lat, lon),
                             #'near': 'Boston, MA',

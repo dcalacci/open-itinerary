@@ -71,7 +71,8 @@ def update_itinerary(parseid):
 def get_recommendations():
     lat = float(request.args.get('lat'))
     lon = float(request.args.get('lon'))
-    res = recommendations.get_foursquare_venues(lat, lon)
+    radius = int(request.args.get('radius', default=100))
+    res = recommendations.get_foursquare_venues(lat, lon, radius)
     return jsonify(res)
 
 
