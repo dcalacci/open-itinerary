@@ -10,10 +10,33 @@ function updatePlaceList(parseid) {
             var places = data['itinerary'];
             for(i in places) {
                 console.log(places[i].name);
-                placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '</li>');
+                placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '<button class="delete-button" onclick="removePlace(' + parseInt(i) + ')">X</button></li>');
                 addPlaceToMap(places[i], (parseInt(i)+1), true);
             }
         });
+}
+
+// remove a place from the itinerary
+function removePlace(num) {
+    // find itinerary id
+    var url = document.URL;
+    if (url.indexOf("/id/") > -1) {
+        url = url.split('/');
+        var daId = url[4];
+    }
+    // build itinerary
+    var itin = {"itinerary" : []};
+    $("ol#place-list").each(function( index ) {
+        $(this).find("li").each(function(){
+            console.log($(this).data("json"));
+            itin.itinerary.push($(this).data("json"));
+        });
+    });
+    // remove place from itinerary
+    console.log(itin);
+    itin['itinerary'].splice(num, 1);
+    console.log(itin);
+
 }
 
 
@@ -30,7 +53,7 @@ $(document).ready(function() {
         // save itinerary when user reorders list
         update: function( event, ui ) {
             var itin = {"itinerary" : []};
-            $("ul#place-list").each(function( index ) {
+            $("ol#place-list").each(function( index ) {
                 $(this).find("li").each(function(){
                     console.log($(this).data("json"));
                     itin.itinerary.push($(this).data("json"));

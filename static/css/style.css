@@ -61,3 +61,10 @@ html, body {
     width: 25px;
     text-align: center;
 }
+
+/* delete buttons */
+
+.delete-button {
+    float: right;
+    margin-right 10px;
+}
