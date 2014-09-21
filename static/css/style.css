@@ -72,11 +72,15 @@ li.ui-sortable-helper {
     text-align: center;
 }
 
-/* delete buttons */
-
 .delete-button {
     float: right;
     margin-right 10px;
+}
+
+.fork-button {
+    float: right;
+    margin: 22px 22px 0 0;
+    padding: 4px 14px 4px 14px;
 }
 
 #start {
