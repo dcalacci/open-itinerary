@@ -2,6 +2,13 @@
 var recommendationsLayer = new L.FeatureGroup();
 map.addLayer(recommendationsLayer);
 
+// Custom recommendation markers
+var greenIcon = L.AwesomeMarkers.icon({
+    icon: 'star',
+    markerColor: 'green',
+    iconColor: 'white'
+});
+
 
 // adding click handler to popups
 map.on('popupopen', function() {
@@ -77,7 +84,8 @@ function addRecommendedPlace(rec) {
     var lon = rec.location.lng;
     var recMarker = new L.marker(new L.LatLng(lat, lon), {
         // bouncy
-        bounceOnAdd: true
+        icon: greenIcon,
+        bounceOnAdd: true,
     });
     recMarker.bindPopup(getPopupForRec(rec));
 
