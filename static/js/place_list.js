@@ -41,6 +41,7 @@ function removePlace(num) {
 
 
 $(document).ready(function() {
+
     var url = document.URL;
     if (url.indexOf("/id/") > -1) {
         url = url.split('/');
@@ -66,23 +67,13 @@ $(document).ready(function() {
                     console.log(data);
                 }, "json");
                 // redraw markers
-                map.removeLayer(placesLayer);
-                console.log("removed layer")
-                placesLayer = new L.FeatureGroup();
-                //placesLayer.eachLayer(function(marker) {
-                    //marker._icon.textContent = "5"
-                    //console.log("THE MARKERS")
-                    //console.log(marker);
-                //});
-                map.addLayer(placesLayer);
-                console.log("added new layer")
+                console.log("refreshed placesLayer...")
                 placesLayer.clearLayers();
                 var places = itin['itinerary'];
                 for (i in places) {
                   addPlaceToMap(places[i], (parseInt(i)+1), false);
                 }
                 //map.fitBounds(placesLayer.getBounds());
-                
             }
         }
     });

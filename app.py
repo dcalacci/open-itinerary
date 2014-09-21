@@ -72,7 +72,7 @@ def get_recommendations():
     lat = float(request.args.get('lat'))
     lon = float(request.args.get('lon'))
     res = recommendations.get_foursquare_venues(lat, lon)
-    return res
+    return jsonify(res)
 
 
 @app.route("/")

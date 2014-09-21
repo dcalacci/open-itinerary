@@ -12,6 +12,7 @@ html, body {
 
 #itinerary {
     position:absolute;
+    display:none;
     min-height: 80%;
     width: 30%;
     top: 10px;
@@ -40,6 +41,7 @@ html, body {
 
 #search {
     position: absolute;
+    display: none;
     width: 200px;
     top: 10px;
     left: 50px;
@@ -54,7 +56,7 @@ html, body {
     border: none;
 }
 
-.leaflet-marker-icon .number{
+.leaflet-marker-icon .number {
     position: relative;
     top: -42px;
     font-size: 12px;
@@ -67,4 +69,18 @@ html, body {
 .delete-button {
     float: right;
     margin-right 10px;
+}
+
+#start {
+    display: none;
+    text-align: center;
+    position: absolute;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-color: rgba(239, 239, 239, 0.84);
+    z-index: 11;
 }

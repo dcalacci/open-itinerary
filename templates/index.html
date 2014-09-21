@@ -13,7 +13,16 @@
 </head>
 <body>
 
-<div id="map">
+  <div id="start">
+    <h1>Welcome to --NAME--</h1>
+    <br />
+    <p>Let's start with some basic information.</p>
+    Where are you traveling to? (enter zip code)
+    <input type="text" name="start-zipcode" />
+    <button id="start-button">Click to begin!</button>
+  </div>
+
+	<div id="map">
   </div>
 
   <div id="itinerary">
@@ -29,6 +38,7 @@
   </div>
 
   <!-- external javascript -->
+
   <script src="{{url_for('static', filename='js/external/jquery.min.js')}}"></script>
   <script src="{{url_for('static', filename='js/external/jquery-ui.min.js')}}"></script>
   <script src="{{url_for('static', filename='js/external/leaflet.js')}}"></script>
@@ -39,15 +49,24 @@
   <script src="{{url_for('static', filename='js/external/ngAutocomplete.js')}}"></script>
   <script src="{{url_for('static', filename='js/app.js')}}"></script>
 
+  <script src="{{url_for('static', filename='js/external/bouncemarker.js')}}"></script>
+
   <!-- in-house -->
   <script src="{{url_for('static', filename='js/map.js')}}"></script>
+  <script src="{{url_for('static', filename='js/recommendations.js')}}"></script>
   <script src="{{url_for('static', filename='js/place_list.js')}}"></script>
 
   <script>
-    if (document.cookie === '') {
-      var zipcode = prompt("Please enter your zipcode.", "xxxxx");
-      document.cookie = zipcode;
-    } 
+    if (document.URL.indexOf('/id/') === -1) {
+      $('#start').show();
+    } else {
+      if (document.cookie === '') {
+        var zipcode = prompt("Please enter your zipcode.", "xxxxx");
+        document.cookie = zipcode;
+      }
+      $('#itinerary').show();
+      $('#search').show();
+    }
 
     $(function() {
       $('#search-button').bind('click', function() {
@@ -91,6 +110,20 @@
           }
         });
         return false;
+      });
+    });
+
+    $(function() {
+      $('#start-button').bind('click', function() {
+        $('#start').hide();
+        $('#itinerary').show();
+        $('#search').show();
+        document.cookie = $('input[name="start-zipcode"]').val();
+
+        $.post('/itinerary/create', JSON.stringify({"itinerary": []}), function(data) {
+          //document.title = 'http://' + window.location.hostname + '/id/' + data.objectId;
+          window.history.pushState({"pageTitle":"TEST"},"", 'http://' + window.location.hostname + ':5000/id/' + data.objectId);
+        }, "json");
       });
     });
   </script>
