@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
           "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<html ng-app="itineraryApp">
 <head>
 	<title>Leaflet Quick Start Guide Example</title>
 	<meta charset="utf-8" />
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<div id="map">
+<div id="map">
   </div>
 
   <div id="itinerary">
@@ -21,10 +21,10 @@
     <ul id="place-list"></ul>
   </div>
 
-  <div id="search" style="text-align:center;">
+  <div id="search" style="text-align:center;" ng-controller="autocompCtrl">
     <span id="itinerary-title">Search</span>
     <br />
-    <input type="text" name="search" />
+    <input type="text" name="search" ng-autocomplete ng-model="autocomplete" options="options" details="details" />
     <button id="search-button">Click!</button>
   </div>
 
@@ -33,6 +33,11 @@
   <script src="{{url_for('static', filename='js/external/jquery-ui.min.js')}}"></script>
   <script src="{{url_for('static', filename='js/external/leaflet.js')}}"></script>
   <script src="{{url_for('static', filename='js/external/underscore.js')}}"></script>
+  <!-- required for ngAutocomplete -->
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+  <script src="{{url_for('static', filename='js/external/angular.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/external/ngAutocomplete.js')}}"></script>
+  <script src="{{url_for('static', filename='js/app.js')}}"></script>
 
   <!-- in-house -->
   <script src="{{url_for('static', filename='js/map.js')}}"></script>
