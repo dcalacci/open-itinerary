@@ -1,5 +1,30 @@
 // js for place listing
 
+function forkItinerary() {
+    var id = getParseId(); 
+    $.get('/itinerary/' + id, function(data) {
+        var fork = data;
+        
+        fork['parent'] = id;
+        console.log(fork);
+        $.post('/itinerary/create', JSON.stringify(fork), function(data) {
+            //var forkId = data.objectId;
+            console.log(data);
+            window.history.pushState({"pageTitle":"TEST"},"", 'http://' + window.location.hostname + ':5000/id/' + data.objectId);
+            // TODO: either force page to refresh here, or make sure all data is changed to refer to new ID
+        }, 'json'); 
+    });
+}
+
+function getParseId() {
+    var url = document.URL;
+    if (url.indexOf("/id/") > -1) {
+        url = url.split('/');
+        var daId = url[4];
+        return daId;
+    }
+}
+
 // updates the place list for the given parseid
 function updatePlaceList(parseid) {
     placeList = $('ol#place-list')
