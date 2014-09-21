@@ -121,3 +121,11 @@ li.ui-sortable-helper {
     display: none;
 }
 
+/* fork text */
+#fork {
+    text-align: center;
+}
+
+.fork-link {
+    margin: auto;
+}
