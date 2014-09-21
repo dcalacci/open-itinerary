@@ -91,6 +91,8 @@ function removePlace(num) {
         }
         map.fitBounds(placesLayer.getBounds());
     }
+    // refresh route
+    drawPlaceRoute();
 
 }
 
@@ -102,6 +104,11 @@ $(document).ready(function() {
         var daId = url[4];
         updatePlaceList(daId);
     }
+
+    // routing
+    $('#route-button').click(function() {
+        drawPlaceRoute();
+    })
 
     // place list, click & hover:
 
@@ -165,6 +172,7 @@ $(document).ready(function() {
                 }
                 //map.fitBounds(placesLayer.getBounds());
             }
+            drawPlaceRoute();
         }
     });
 });

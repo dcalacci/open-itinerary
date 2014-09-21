@@ -6,6 +6,8 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{url_for('static', filename='css/external/leaflet.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='js/external/leaflet-routing-machine.css')}}">
+  
   <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
   <script type="text/javascript">
     $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
@@ -30,6 +32,7 @@
     <button class="fork-button" onclick="forkItinerary()">Fork</button>
     <div id="fork"></div>
     <ol id="place-list"></ol>
+    <button id="route-button">route</button>
   </div>
 
   <div id="search" style="text-align:center;" ng-controller="autocompCtrl">
@@ -47,16 +50,20 @@
   <script src="{{url_for('static', filename='js/external/underscore.js')}}"></script>
   <!-- required for ngAutocomplete -->
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+  <!-- <script src="http://www.mapquestapi.com/sdk/leaflet/v1.0/mq-map.js?key=Fmjtd%7Cluur2h0221%2Crs%3Do5-9wb2q0 "></script> -->
+  <!-- <script src="http://www.mapquestapi.com/sdk/leaflet/v1.0/mq-routing.js?key=Fmjtd%7Cluur2h0221%2Crs%3Do5-9wb2q0"></script> -->
   <script src="{{url_for('static', filename='js/external/angular.min.js')}}"></script>
   <script src="{{url_for('static', filename='js/external/ngAutocomplete.js')}}"></script>
   <script src="{{url_for('static', filename='js/app.js')}}"></script>
-
   <script src="{{url_for('static', filename='js/external/bouncemarker.js')}}"></script>
+  <script src="{{url_for('static', filename='js/external/leaflet-routing-machine.js')}}"></script>
 
   <!-- in-house -->
   <script src="{{url_for('static', filename='js/map.js')}}"></script>
   <script src="{{url_for('static', filename='js/recommendations.js')}}"></script>
+  <script src="{{url_for('static', filename='js/routing-machine.js')}}"></script>
   <script src="{{url_for('static', filename='js/place_list.js')}}"></script>
   <script src="{{url_for('static', filename='js/zack.js')}}"></script>
+
 </body>
 </html>

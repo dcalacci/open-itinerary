@@ -1,6 +1,7 @@
 // map javascript
 
 
+
 // Custom numbered markers
 L.NumberedDivIcon = L.Icon.extend({
     options: {
@@ -75,6 +76,7 @@ function addPlaceToMap(place, num, redraw) {
     if (redraw) {
         map.fitBounds(placesLayer.getBounds());
     }
+    drawPlaceRoute();
 }
 
 function drawRoute(arr) {
