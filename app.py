@@ -90,5 +90,9 @@ def loc(zipcode, address):
 	address = address.split(',')
 	return f.get_info_from_name_and_zip(address[0], zipcode)
 
+@app.route("/latlon/<lat>/<lon>")
+def latlon(lat, lon):
+	return f.get_info_from_lat_and_lon(lat, lon)
+
 if __name__ == "__main__":
     app.run(debug=True)
