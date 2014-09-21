@@ -126,6 +126,10 @@ $(document).ready(function() {
 
     // $('#show-routing-container').detach().appendTo('.leaflet-routing-alt h2');
 
+    $('#route-recommend').click(function() {
+       getRecommendationsForRoute();
+    });
+
     
     $("#show-routing-container").click(function() {
         if (showRouting == 0) {
