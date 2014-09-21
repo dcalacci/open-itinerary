@@ -68,7 +68,7 @@ function drawPlaceRoute() {
     });
     control = L.Routing.control({waypoints: points});
     control.addTo(map);
-
+    // control.spliceWaypoints(0, points.length);
     // routeline = L.Routing.line(routes[0]);
     console.log("map:");
     console.log(map);

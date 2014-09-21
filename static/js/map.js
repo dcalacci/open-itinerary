@@ -76,6 +76,7 @@ function addPlaceToMap(place, num, redraw) {
     if (redraw) {
         map.fitBounds(placesLayer.getBounds());
     }
+    drawPlaceRoute();
 }
 
 function drawRoute(arr) {

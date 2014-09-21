@@ -91,6 +91,8 @@ function removePlace(num) {
         }
         map.fitBounds(placesLayer.getBounds());
     }
+    // refresh route
+    drawPlaceRoute();
 
 }
 
@@ -170,6 +172,7 @@ $(document).ready(function() {
                 }
                 //map.fitBounds(placesLayer.getBounds());
             }
+            drawPlaceRoute();
         }
     });
 });
