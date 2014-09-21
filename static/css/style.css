@@ -5,17 +5,33 @@ html, body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+
+#search {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
 #map {
     width: 100%;
     height: 100%;
 }
+
+#itinerary-title {
+    padding-left: 10px;
+    font-size: 0.8em;
+    font-weight: 100;
+    position: fixed;
+    top: -5px;
+    right: 110px;
+}
+
 
 #itinerary {
     position:absolute;
     display:none;
     min-height: 80%;
     width: 30%;
-    top: 0px;
+    top: 60px;
     right: 10px;
     background-color: rgba(239, 239, 239, 0.8);
     z-index: 11;
@@ -47,17 +63,6 @@ li.ui-sortable-helper {
     cursor: move;
 }
 
-#search {
-    position: absolute;
-    display: none;
-    width: 400px;
-    top: 0px;
-    left: 50px;
-    height: 100px;
-    background-color: rgba(239, 239, 239, 0.8);
-    z-index: 11;
-}
-
 /* numbered map markers */
 .leaflet-div-icon {
     background: transparent;
@@ -81,6 +86,16 @@ li.ui-sortable-helper {
     float: right;
     margin: 22px 22px 0 0;
     padding: 4px 14px 4px 14px;
+}
+
+#fork {
+    float: right;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.fork-link {
+    padding-left: 5px !important;
 }
 
 #start {

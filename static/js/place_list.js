@@ -15,7 +15,7 @@ function forkItinerary() {
             // and I think everything else just works via URL
             // the one thing to update is the "Forked from" text
             //
-            $('div#fork').html('<a class="fork-link" href="/id/' + fork['parent'] + '">Forked from @' + fork['parent'] + '</a>');
+            $('div#fork').html('<a class="fork-link" href="/id/' + fork['parent'] + '"> @' + fork['parent'] + '</a>');
         }, 'json'); 
     });
 }
@@ -36,7 +36,7 @@ function updatePlaceList(parseid) {
         function(data) {
             if (data['parent']) { // our list is a fork, so we need to indicate that somewhere
                 console.log('PARENT')
-                $('div#fork').html('<a class="fork-link" href="/id/' + data['parent'] + '">Forked from @' + data['parent'] + '</a>');
+                $('div#fork').html('<a class="fork-link" href="/id/' + data['parent'] + '">@' + data['parent'] + '</a>');
             }
             console.log("received list of places:");
             console.log(data);

@@ -5,7 +5,9 @@
 	<title>openItinerary</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="http://www.jsdelivr.com/#!hint.css" rel="stylesheet">
   <link rel="stylesheet" href="{{url_for('static', filename='css/external/leaflet.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='js/external/leaflet-routing-machine.css')}}">
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -17,6 +19,30 @@
 </head>
 <body>
 
+  <div class="pure-menu pure-menu-open pure-menu-horizontal">
+    <a href="#" class="pure-menu-heading">Open Itinerary</a>
+
+    <ul>
+      <li>
+        <div id="search" class="pure-form" ng-controller="autocompCtrl">
+          <input id="search-query" type="text" name="search" class="pure-input-rounded" ng-autocomplete ng-model="autocomplete" options="options" details="details" value=""/>
+          <button id="search-button" type="submit" class="pure-button pure-button-primary">
+            <i class="fa fa-search-plus"></i>
+            Find
+          </button>
+        </div>
+      </li>
+      <li>
+        <div class="hint--bottom" data-hint="This itinerary is a fork! Click here to see the original">
+          <a href="#" >
+            <i class="fa fa-code-fork fa-2x"></i>
+            <div id="fork"></div>
+          </a>
+        </div>
+      </li>
+      <li id="itinerary-title">Itinerary</li>
+    </ul>
+  </div>
   <div id="start">
     <h1>Welcome to openItinerary.</h1>
     <br />
@@ -30,18 +56,12 @@
   </div>
 
   <div id="itinerary">
-    <span id="itinerary-title">Places</span>
     <button class="fork-button" onclick="forkItinerary()">Fork</button>
-    <div id="fork"></div>
+    <!-- <div id="fork"></div> -->
     <ol id="place-list"></ol>
   </div>
 
-  <div id="search" style="text-align:center;" ng-controller="autocompCtrl">
-    <span id="itinerary-title">Search</span>
-    <br />
-    <input id="search-query" style="width:80%" type="text" name="search" ng-autocomplete ng-model="autocomplete" options="options" details="details" value=""/>
-    <button id="search-button">Add</button>
-  </div>
+
 
   <!-- external javascript -->
 
