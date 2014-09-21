@@ -11,8 +11,8 @@
             //console.log(data);
             var bb = data[0]['boundingbox'];
             console.log(bb);
-            var SW = new google.maps.LatLng(bb[1], bb[3]);
-            var NE = new google.maps.LatLng(bb[0], bb[2]);
+            var NE = new google.maps.LatLng(bb[1], bb[3]);
+            var SW = new google.maps.LatLng(bb[0], bb[2]);
             var bounds = new google.maps.LatLngBounds(SW, NE);
             $scope.options.bounds = bounds;
             console.log('Added bounds to autocomplete');
