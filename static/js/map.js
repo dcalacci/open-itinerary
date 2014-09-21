@@ -74,3 +74,12 @@ function addPlaceToMap(place, num, redraw) {
         map.fitBounds(placesLayer.getBounds());
     }
 }
+
+function drawRoute(arr) {
+    for (a in arr) {
+        console.log(arr);
+        L.Routing.control({
+            waypoints: a
+        }).addTo(map);
+    }
+}
