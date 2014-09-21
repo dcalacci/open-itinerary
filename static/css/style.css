@@ -39,6 +39,14 @@ html, body {
     border-bottom: 1px solid rgba(33, 33, 33, 0.61);
 }
 
+.place-item:hover {
+    cursor: move;
+}
+
+li.ui-sortable-helper {
+    cursor: move;
+}
+
 #search {
     position: absolute;
     display: none;
