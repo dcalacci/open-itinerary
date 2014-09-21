@@ -103,6 +103,11 @@ $(document).ready(function() {
         updatePlaceList(daId);
     }
 
+    // routing
+    $('#route-button').click(function() {
+        drawPlaceRoute();
+    })
+
     // place list, click & hover:
 
     // mouse hover on, color to blue

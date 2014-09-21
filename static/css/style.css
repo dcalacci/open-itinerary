@@ -96,3 +96,21 @@ li.ui-sortable-helper {
     background-color: rgba(239, 239, 239, 0.84);
     z-index: 11;
 }
+
+/* routing */
+.leaflet-routing-container {
+    position: fixed;
+    left: 0 !important;
+    bottom: 0 !important;
+    background-color: rgba(239, 239, 239, 0.84) !important;
+    /* display: none; */
+}
+
+.leaflet-routing-alt {
+    background-color: none;
+}
+
+.leaflet-marker-draggable {
+    display: none;
+}
+

@@ -1,6 +1,7 @@
 // map javascript
 
 
+
 // Custom numbered markers
 L.NumberedDivIcon = L.Icon.extend({
     options: {
