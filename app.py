@@ -30,7 +30,7 @@ def get_itinerary(parseid):
     r = requests.get('https://api.parse.com/1/classes/Itinerary/{}'.format(parseid),
                      headers=app.config['PARSE_HEADERS'])
 
-    return jsonify(itinerary=r.json()['itinerary'])
+    return jsonify(itinerary=r.json()['itinerary'], parent=getattr(r.json(), 'parent', None))
 
 @app.route('/id/<parseid>', methods=['GET'])
 def get_id(parseid):
@@ -47,7 +47,7 @@ def get_id(parseid):
 
 @app.route('/itinerary/<parseid>', methods=['POST'])
 def update_itinerary(parseid):
-    """ Gets the itinerary for a particular parseid
+    """ Updates the itinerary for a particular parseid
 
     POST data must follow this format:
 
