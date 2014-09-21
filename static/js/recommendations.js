@@ -84,7 +84,7 @@ map.on('popupopen', function() {
             console.log(data);
             console.log(JSON.stringify(data));
 
-            placeList.append("<li data-json='" + JSON.stringify(data) + "' class='place-item'>" + name + '</li>');
+            placeList.append("<li data-json='" + JSON.stringify(data) + "' class='place-item'>" + name + '<button class="delete-button" onclick="removePlace(' + parseInt(liList.length) + ')">X</button></li>');
             var newMarker = data;
             addPlaceToMap(newMarker, parseInt(liList.length)+1, true);
 
