@@ -2,7 +2,7 @@
           "http://www.w3.org/TR/html4/strict.dtd">
 <html ng-app="itineraryApp">
 <head>
-	<title>openItinerary</title>
+	<title>Open Itinerary</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
@@ -32,14 +32,23 @@
           </button>
         </div>
       </li>
+
       <li>
-        <div class="hint--bottom" data-hint="This itinerary is a fork! Click here to see the original">
-          <a href="#" >
-            <i class="fa fa-code-fork fa-2x"></i>
-            <div id="fork"></div>
-          </a>
-        </div>
+        <a href="#" class="fork-button" onclick="forkItinerary()">
+          <i class="fa fa-code-fork fa-2x"></i>
+          Fork this itinerary!
+        </a>
       </li>
+
+      <li>
+        <!-- <div class="hint--bottom" data-hint="This itinerary is a fork! Click here to see the original"> -->
+        <a href="#">
+          <i class="fa fa-cloud fa-2x"></i>
+          <div id="fork"></div>
+        </a>
+        <!-- </div> -->
+      </li>
+
       <li id="itinerary-title">Itinerary</li>
     </ul>
   </div>
@@ -56,7 +65,6 @@
   </div>
 
   <div id="itinerary">
-    <button class="fork-button" onclick="forkItinerary()">Fork</button>
     <!-- <div id="fork"></div> -->
     <ol id="place-list"></ol>
   </div>
