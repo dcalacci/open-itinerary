@@ -27,7 +27,7 @@ if (document.URL.indexOf('/id/') === -1) {
             , "lon": newData['lon']
             , "name": newName
           };
-            placeList.append("<li data-json='" + JSON.stringify(jsonArr) + "' class='place-item'>" + newName + '<button class="delete-button" onclick="removePlace(' + parseInt(liList.length) + ')"><i class="fa fa-trash"></i></button></li>');
+            placeList.append("<li data-json='" + JSON.stringify(jsonArr) + "' class='place-item'>" + newName + '<span class="delete-button" onclick="removePlace(' + parseInt(liList.length) + ')"><i class="fa fa-trash"></i></span></li>');
           var newMarker = newData;
           newMarker['name'] = newName;
           addPlaceToMap(newMarker, parseInt(liList.length)+1, true);
@@ -56,8 +56,8 @@ if (document.URL.indexOf('/id/') === -1) {
 
     $(function() {
       $('#start-button').bind('click', function() {
-        $('#start').hide();
-        $('#itinerary').show();
+        $('#start').slideUp("slow");
+        $('#itinerary').show('slide', {direction: 'right'}, 800);
         $('#search').show();
         document.cookie = $('input[name="start-zipcode"]').val();
 
