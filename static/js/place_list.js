@@ -97,7 +97,6 @@ function removePlace(num) {
 }
 
 
-
 $(document).ready(function() {
 
     // $('#show-routing-container').detach().appendTo('.leaflet-routing-alt h2');
