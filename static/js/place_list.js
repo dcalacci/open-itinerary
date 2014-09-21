@@ -15,7 +15,7 @@ function forkItinerary() {
             // and I think everything else just works via URL
             // the one thing to update is the "Forked from" text
             //
-            $('div#fork').html('<a class="fork-link" href="/id/' + fork['parent'] + '"> @' + fork['parent'] + '</a>');
+            $('div#fork').html('<a class="fork-link" href="/id/' + fork['parent'] + '"><i class="fa fa-trash"></i> @' + fork['parent'] + '</a>');
         }, 'json'); 
     });
 }
@@ -44,7 +44,7 @@ function updatePlaceList(parseid) {
             var places = data['itinerary'];
             for(i in places) {
                 console.log(places[i].name);
-                placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '<i class="fa fa-ban" onclick="removePlace(' + parseInt(liList.length) + ')"></i></li>');
+                placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '<span class="delete-button" onclick="removePlace(' + parseInt(i) + ')"><i class="fa fa-trash"></i></button></li>');
                 addPlaceToMap(places[i], (parseInt(i)+1), true);
             }
         });
