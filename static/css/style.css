@@ -18,11 +18,11 @@ html, body {
 
 #itinerary-title {
     padding-left: 10px;
-    font-size: 0.8em;
-    font-weight: 100;
+    font-size: 1.5em;
+    font-weight: normal;
     position: fixed;
-    top: -5px;
-    right: 110px;
+    top: 11px;
+    right: 130px;
 }
 
 
@@ -36,12 +36,6 @@ html, body {
     right: 0px;
     background-color: rgba(239, 239, 239, 0.8);
     z-index: 11;
-}
-
-#itinerary-title {
-    padding-left: 10px;
-    font-size: 3em;
-    font-weight: 100;
 }
 
 #place-list {
@@ -183,4 +177,8 @@ li.ui-sortable-helper {
 
 .button-secondary {
     background: rgb(66, 184, 221); /* this is a light blue */
+}
+
+i:hover {
+    cursor: pointer;
 }
