@@ -29,8 +29,12 @@ def get_itinerary(parseid):
     """
     r = requests.get('https://api.parse.com/1/classes/Itinerary/{}'.format(parseid),
                      headers=app.config['PARSE_HEADERS'])
+    #print(r.json())
+    #print(r.json()['parent'])
+    #print(r.json().get('parent', None))
 
-    return jsonify(itinerary=r.json()['itinerary'], parent=getattr(r.json(), 'parent', None))
+    #return jsonify(itinerary=r.json()['itinerary'], parent=getattr(r.json(), 'parent', None))
+    return jsonify(itinerary=r.json()['itinerary'], parent=r.json().get('parent', None))
 
 @app.route('/id/<parseid>', methods=['GET'])
 def get_id(parseid):
