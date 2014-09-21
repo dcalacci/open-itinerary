@@ -1,6 +1,7 @@
 from flask import *
 import fun_requests as f
 import requests
+import recommendations
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -53,6 +54,13 @@ def update_itinerary(parseid):
     r = requests.put('https://api.parse.com/1/classes/Itinerary/{}'.format(parseid),
                      headers=update_headers, data=request.get_data())
     return jsonify(r.json())
+
+@app.route('/recommendation', methods=['GET'])
+def get_recommendations():
+    lat = float(request.args.get('lat'))
+    lon = float(request.args.get('lon'))
+    res = recommendations.get_foursquare_venues(lat, lon)
+    return res
 
 
 @app.route("/")
