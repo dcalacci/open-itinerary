@@ -95,18 +95,33 @@ function removePlace(num) {
     drawPlaceRoute();
 
 }
+var showRouting = 0;
+$(function() {
+    setTimeout(function() {
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.id = 'show-routing-container';
+        button.appendChild(document.createTextNode('Show/Hide'));
+        $('.leaflet-routing-container').append(button);
+
+        $('.leaflet-routing-container #show-routing-container').click(function() {
+            if (showRouting == 0) {
+            $('.leaflet-routing-container').animate({height: '200px'}, 500);
+                showRouting = 1;
+            } else {
+                $('.leaflet-routing-container').animate({height: '50px'}, 500);
+                showRouting = 0;
+            }
+        });
+    }, 1000);
+});
 
 
 $(document).ready(function() {
 
     // $('#show-routing-container').detach().appendTo('.leaflet-routing-alt h2');
-    var button = document.createElement('button');
-    button.type = 'button';
-    button.id = 'show-routing-container';
-    button.appendChild(document.createTextNode('Show/Hide'));
-    $('.leaflet-routing-container').append(button);
 
-    var showRouting = 0;
+    
     $("#show-routing-container").click(function() {
         if (showRouting == 0) {
             $('.leaflet-routing-container').animate({height: '200px'}, 500);
