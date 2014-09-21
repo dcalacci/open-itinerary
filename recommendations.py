@@ -9,6 +9,7 @@ def get_foursquare_venues(lat, lon, radius=250, section='topPicks'):
                                 'client_id': 'ZUDSL5DMLLDATSU3KOY2BAQOJPPLT01ZKHQMHUNLIBYZLOPR',
                                 'client_secret': 'RS0F55CWISG4AAJVYQ4WXQMKADNMO5CVTPYJUYHPGCJ22TA2',
                                 'v': '20140920',
-                                #'radius': radius,
+                                'radius': radius,
+                                'limit': 5,
                                 'section': section})
     return data.json()['response']

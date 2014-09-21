@@ -56,7 +56,7 @@ html, body {
     border: none;
 }
 
-.leaflet-marker-icon .number{
+.leaflet-marker-icon .number {
     position: relative;
     top: -42px;
     font-size: 12px;
