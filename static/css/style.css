@@ -39,6 +39,14 @@ html, body {
     border-bottom: 1px solid rgba(33, 33, 33, 0.61);
 }
 
+.place-item:hover {
+    cursor: move;
+}
+
+li.ui-sortable-helper {
+    cursor: move;
+}
+
 #search {
     position: absolute;
     display: none;
@@ -56,12 +64,19 @@ html, body {
     border: none;
 }
 
-.leaflet-marker-icon .number{
+.leaflet-marker-icon .number {
     position: relative;
     top: -42px;
     font-size: 12px;
     width: 25px;
     text-align: center;
+}
+
+/* delete buttons */
+
+.delete-button {
+    float: right;
+    margin-right 10px;
 }
 
 #start {

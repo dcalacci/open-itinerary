@@ -1,6 +1,6 @@
-// map javascript. mostly taken from the leaflet.js example page right now
-//
-//
+// map javascript
+
+
 // Custom numbered markers
 L.NumberedDivIcon = L.Icon.extend({
     options: {
@@ -52,9 +52,11 @@ var placesLayer = new L.FeatureGroup();
 map.addLayer(placesLayer);
 
 
+
+
 // popup DOM for a particular place. HTML with name, description, etc.
 function popupForPlace(place) {
-    return "<span id='place-name'>" + place['name'] + "</span><br/>"
+    return "<span id='place-name'>" + place['name'] + "</span><br/><a class='recommendations-button' href='#' data-lat='" + place['lat'] + "' data-lon='" + place['lon'] + "'>Get Recommendations</a>"
 }
 
 
