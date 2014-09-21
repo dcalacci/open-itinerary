@@ -13,7 +13,7 @@ if (document.URL.indexOf('/id/') === -1) {
     $(function() {
       $('#search-button').bind('click', function() {
         $.getJSON($SCRIPT_ROOT + '/location/' + document.cookie + '/' + 
-           $('input[name="search"]').val(), {
+           encodeURIComponent($('input[name="search"]').val().replace('\'', '')), {
         }, function(data) {
           placeList = $('ol#place-list');
           liList = $('li.place-item');
@@ -68,8 +68,3 @@ if (document.URL.indexOf('/id/') === -1) {
         }, "json");
       });
     });
-
-    $(function() {
-      $('#search-query').val(document.cookie);
-    });
-    
