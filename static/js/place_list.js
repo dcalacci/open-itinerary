@@ -32,6 +32,7 @@ function getParseId() {
 // updates the place list for the given parseid
 function updatePlaceList(parseid) {
     placeList = $('ol#place-list')
+    liList = $('li.place-item');
     $.get('/itinerary/' + parseid,
         function(data) {
             if (data['parent']) { // our list is a fork, so we need to indicate that somewhere
@@ -43,7 +44,7 @@ function updatePlaceList(parseid) {
             var places = data['itinerary'];
             for(i in places) {
                 console.log(places[i].name);
-                placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '<button class="delete-button" onclick="removePlace(' + parseInt(i) + ')">X</button></li>');
+                placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '<i class="fa fa-ban" onclick="removePlace(' + parseInt(liList.length) + ')"></i></li>');
                 addPlaceToMap(places[i], (parseInt(i)+1), true);
             }
         });
@@ -113,7 +114,7 @@ $(function() {
                 showRouting = 0;
             }
         });
-    }, 1000);
+    }, 2500);
 });
 
 

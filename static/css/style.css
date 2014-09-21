@@ -30,9 +30,10 @@ html, body {
     position:absolute;
     display:none;
     min-height: 80%;
-    width: 30%;
-    top: 60px;
-    right: 10px;
+    height: 100%;
+    width: 20%;
+    top: 56px;
+    right: 0px;
     background-color: rgba(239, 239, 239, 0.8);
     z-index: 11;
 }
@@ -45,6 +46,9 @@ html, body {
 
 #place-list {
     /*list-style-type: none;*/
+    padding-top: 15px;
+    float: left;
+    width: 80%;
 }
 
 .place-item {
@@ -147,5 +151,5 @@ li.ui-sortable-helper {
 #show-routing-container {
     position: absolute;
     top: 12px;
-    right: 5px;
+    right: 10px;
 }
