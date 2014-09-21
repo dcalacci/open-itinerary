@@ -48,6 +48,28 @@ $(document).ready(function() {
         var daId = url[4];
         updatePlaceList(daId);
     }
+
+    // mouse hover on, color to blue
+    $('ol#place-list').on('mouseover', 'li.place-item',function() {
+        console.log('place item hovering');
+        var placeLat = $(this).data('json')['lat'];
+        var placeLon = $(this).data('json')['lon'];
+        $(this).animate({color: 'rgb(42, 136, 199)', borderColor: 'rgb(42, 136, 199)'}, 300);
+        placesLayer.eachLayer(function(marker) {
+            var marker_lat = marker['_origLatlng']['lat'];
+            var marker_lon = marker['_origLatlng']['lng'];
+            if (placeLat == marker_lat && placeLon == marker_lon) {
+                marker.bounce({duration: 300, height: 75});
+            }
+        });
+    });
+
+    // mouse out, color back to normal
+    $('ol#place-list').on('mouseout', 'li.place-item', function() {
+        $(this).animate({color: '#373737', borderColor: '#373737'}, 300);
+    })
+
+
     $("ol#place-list").sortable({
         opacity: 0.6,
         cursor: 'move',
