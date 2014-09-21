@@ -15,7 +15,7 @@ function forkItinerary() {
             // and I think everything else just works via URL
             // the one thing to update is the "Forked from" text
             //
-            $('div#fork').html('<a class="fork-link" href="/id/' + fork['parent'] + '"><i class="fa fa-trash"></i> @' + fork['parent'] + '</a>');
+            $('div#fork').html('<a class="fork-link" href="/id/' + fork['parent'] + '"> @' + fork['parent'] + '</a>');
         }, 'json'); 
     });
 }
@@ -25,6 +25,9 @@ function getParseId() {
     if (url.indexOf("/id/") > -1) {
         url = url.split('/');
         var daId = url[4];
+        if (daId.indexOf('#') > -1) {
+            daId = daId.substring(0, daId.length - 1)
+        }
         return daId;
     }
 }
