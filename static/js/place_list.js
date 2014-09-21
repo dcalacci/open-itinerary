@@ -105,6 +105,7 @@ $(function() {
         var button = document.createElement('button');
         button.type = 'button';
         button.id = 'show-routing-container';
+        button.className = 'pure-button pure-button-primary';
         button.appendChild(document.createTextNode('Show/Hide'));
         $('.leaflet-routing-container').append(button);
 
