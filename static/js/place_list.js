@@ -81,7 +81,7 @@ function removePlace(num) {
         for (i in places) {
           addPlaceToMap(places[i], (parseInt(i)+1), false);
         }
-        //map.fitBounds(placesLayer.getBounds());
+        map.fitBounds(placesLayer.getBounds());
     }
 
 }
