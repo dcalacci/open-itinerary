@@ -100,17 +100,24 @@ li.ui-sortable-helper {
 /* routing */
 .leaflet-routing-container {
     position: fixed;
-    left: 0 !important;
-    bottom: 0 !important;
+    left: 5px !important;
+    bottom: 0px !important;
+    height: 40px;
     background-color: rgba(239, 239, 239, 0.84) !important;
+    overflow: scroll;
     /* display: none; */
 }
 
 .leaflet-routing-alt {
+    padding-top: 0px;
     background-color: none;
 }
 
 .leaflet-marker-draggable {
+    display: none;
+}
+
+.leaflet-marker-shadow {
     display: none;
 }
 
