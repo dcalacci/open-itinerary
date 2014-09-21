@@ -2,7 +2,7 @@
 
 // updates the place list for the given parseid
 function updatePlaceList(parseid) {
-    placeList = $('ul#place-list')
+    placeList = $('ol#place-list')
     $.get('/itinerary/' + parseid,
         function(data) {
             console.log("received list of places:");
@@ -24,7 +24,7 @@ $(document).ready(function() {
         var daId = url[4];
         updatePlaceList(daId);
     }
-    $("ul#place-list").sortable({
+    $("ol#place-list").sortable({
         opacity: 0.6,
         cursor: 'move',
         // save itinerary when user reorders list

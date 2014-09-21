@@ -18,7 +18,7 @@
 
   <div id="itinerary">
     <span id="itinerary-title">Places</span>
-    <ul id="place-list"></ul>
+    <ol id="place-list"></ol>
   </div>
 
   <div id="search" style="text-align:center;">
@@ -49,7 +49,7 @@
         $.getJSON($SCRIPT_ROOT + '/location/' + document.cookie + '/' + 
            $('input[name="search"]').val(), {
         }, function(data) {
-          placeList = $('ul#place-list');
+          placeList = $('ol#place-list');
           liList = $('li.place-item');
 
           var newName = Object.keys(data)[0];
@@ -73,7 +73,7 @@
               var daId = url[4];
 
               var itin = {"itinerary" : []};
-              $("ul#place-list").each(function( index ) {
+              $("ol#place-list").each(function( index ) {
                   $(this).find("li").each(function(){
                       itin.itinerary.push($(this).data("json"));
                   });
