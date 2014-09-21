@@ -47,7 +47,7 @@ function updatePlaceList(parseid) {
             var places = data['itinerary'];
             for(i in places) {
                 console.log(places[i].name);
-                placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '<span class="delete-button" onclick="removePlace(' + parseInt(i) + ')"><i class="fa fa-trash"></i></button></li>');
+                placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '<span class="delete-button" onclick="removePlace(' + parseInt(liList.length) + ')"><i class="fa fa-trash"></i></span></li>');
                 addPlaceToMap(places[i], (parseInt(i)+1), true);
             }
         });
