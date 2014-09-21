@@ -85,9 +85,10 @@ def go():
     return render_template('homepage.html')
 
 
-@app.route("/location/<zipcode>/<addresses>")
-def loc(zipcode, addresses):
-    return f.zipcode_and_addresses(zipcode, addresses)
+@app.route("/location/<zipcode>/<address>")
+def loc(zipcode, address):
+	address = address.split(',')
+	return f.get_info_from_name_and_zip(address[0], zipcode)
 
 if __name__ == "__main__":
     app.run(debug=True)
