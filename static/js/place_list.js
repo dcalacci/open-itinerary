@@ -27,15 +27,37 @@ function removePlace(num) {
     // build itinerary
     var itin = {"itinerary" : []};
     $("ol#place-list").each(function( index ) {
-        $(this).find("li").each(function(){
+        //console.log(index);
+        $(this).find("li").each(function(i){
+            //console.log(i);
             console.log($(this).data("json"));
             itin.itinerary.push($(this).data("json"));
+            if (i === num) {
+                $(this).remove()
+            } 
+            else if (i > num) {
+                //$(this).click(removePlace(parseInt(i)-1));
+                $('ol#place-list').on("click", "button.delete-button", function(){removePlace(parseInt(i)-1);});
+            } 
         });
     });
     // remove place from itinerary
-    console.log(itin);
     itin['itinerary'].splice(num, 1);
     console.log(itin);
+    if (daId !== undefined) {
+        $.post("/itinerary/" + daId, JSON.stringify(itin), function(data) {
+            console.log("Saved new itinerary order");
+            console.log(data);
+        }, "json");
+        // redraw markers
+        console.log("refreshed placesLayer...")
+        placesLayer.clearLayers();
+        var places = itin['itinerary'];
+        for (i in places) {
+          addPlaceToMap(places[i], (parseInt(i)+1), false);
+        }
+        //map.fitBounds(placesLayer.getBounds());
+    }
 
 }
 
