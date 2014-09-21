@@ -3,13 +3,10 @@ nu-unhackathon
 
 literally just a repo of merge conflicts
 
-
-## backend
-
-- Flask + Parse to store itineraries
-- Access Parse using REST API as no Python library exists
-
 Todo:
-- User auth, allow users to save their itineraries, auth, register
-- Recommendations, get locations, use foursquare to filter, possibly other params
 - Forking of itineraries
+  - Very basic model, itineraries have a Parent attribute, which is a parseid
+  - If that parent is set, they display a link to the parent itinerary
+- Routing
+- Recommendations UI
+- Recommendations along route

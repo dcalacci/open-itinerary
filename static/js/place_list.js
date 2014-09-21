@@ -1,10 +1,43 @@
 // js for place listing
 
+function forkItinerary() {
+    var id = getParseId(); 
+    $.get('/itinerary/' + id, function(data) {
+        var fork = data;
+        
+        fork['parent'] = id;
+        console.log(fork);
+        $.post('/itinerary/create', JSON.stringify(fork), function(data) {
+            //var forkId = data.objectId;
+            console.log(data);
+            window.history.pushState({"pageTitle":"TEST"},"", 'http://' + window.location.hostname + ':5000/id/' + data.objectId);
+            // it seems like the data is okay. when forked, adding new places adds them to the child
+            // and I think everything else just works via URL
+            // the one thing to update is the "Forked from" text
+            //
+            $('div#fork').html('<a class="fork-link" href="/id/' + fork['parent'] + '">Forked from @' + fork['parent'] + '</a>');
+        }, 'json'); 
+    });
+}
+
+function getParseId() {
+    var url = document.URL;
+    if (url.indexOf("/id/") > -1) {
+        url = url.split('/');
+        var daId = url[4];
+        return daId;
+    }
+}
+
 // updates the place list for the given parseid
 function updatePlaceList(parseid) {
     placeList = $('ol#place-list')
     $.get('/itinerary/' + parseid,
         function(data) {
+            if (data['parent']) { // our list is a fork, so we need to indicate that somewhere
+                console.log('PARENT')
+                $('div#fork').html('<a class="fork-link" href="/id/' + data['parent'] + '">Forked from @' + data['parent'] + '</a>');
+            }
             console.log("received list of places:");
             console.log(data);
             var places = data['itinerary'];
@@ -56,7 +89,7 @@ function removePlace(num) {
         for (i in places) {
           addPlaceToMap(places[i], (parseInt(i)+1), false);
         }
-        //map.fitBounds(placesLayer.getBounds());
+        map.fitBounds(placesLayer.getBounds());
     }
 
 }
