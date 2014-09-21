@@ -68,3 +68,8 @@ if (document.URL.indexOf('/id/') === -1) {
         }, "json");
       });
     });
+
+    $(function() {
+      $('#search-query').val(document.cookie);
+    });
+    
