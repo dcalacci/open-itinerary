@@ -1,25 +1,20 @@
 // map javascript
 
 // Custom recommendation markers
-var recMarker = L.AwesomeMarkers.icon({
+var greenIcon = L.AwesomeMarkers.icon({
     icon: 'star',
     markerColor: 'green',
     iconColor: 'white'
 });
 
-// Custom numbered markers
 L.NumberedDivIcon = L.Icon.extend({
     options: {
-    iconUrl: '/static/images/marker_hole.png',
+    iconUrl: '/static/images/external/blue-icon.png',
     number: '',
     shadowUrl: null,
-    iconSize: new L.Point(25, 41),
-        iconAnchor: new L.Point(13, 41),
+    iconSize: new L.Point(31, 43),
+        iconAnchor: new L.Point(16, 43),
         popupAnchor: new L.Point(0, -33),
-        /*
-        iconAnchor: (Point)
-        popupAnchor: (Point)
-        */
         className: 'leaflet-div-icon'
     },
 
@@ -40,6 +35,7 @@ L.NumberedDivIcon = L.Icon.extend({
         return null;
     }
 });
+
 
 // create map
 var map = L.map('map'); //.setView([51.505, -0.09], 13);

@@ -52,6 +52,7 @@
             }
 
             this._setIconStyles(div, 'icon-' + options.markerColor);
+
             return div;
         },
 
