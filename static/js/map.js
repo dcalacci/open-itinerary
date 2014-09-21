@@ -39,6 +39,11 @@ L.NumberedDivIcon = L.Icon.extend({
 // create map
 var map = L.map('map').setView([51.505, -0.09], 13);
 
+// set view to user's specified location
+$.get('http://nominatim.openstreetmap.org/search?q=' + document.cookie +'&format=json&polygon=1&addressdetails=1', function(data) {
+        map.setView([data[0]['lat'], data[0]['lon']], 13);
+        });
+
 // add mapbox tile layer
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 		maxZoom: 18,
