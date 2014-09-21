@@ -5,18 +5,35 @@ html, body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+
+#search {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
 #map {
     width: 100%;
     height: 100%;
 }
 
+#itinerary-title {
+    padding-left: 10px;
+    font-size: 0.8em;
+    font-weight: 100;
+    position: fixed;
+    top: -5px;
+    right: 110px;
+}
+
+
 #itinerary {
     position:absolute;
     display:none;
     min-height: 80%;
-    width: 30%;
-    top: 0px;
-    right: 10px;
+    height: 100%;
+    width: 20%;
+    top: 56px;
+    right: 0px;
     background-color: rgba(239, 239, 239, 0.8);
     z-index: 11;
 }
@@ -29,6 +46,9 @@ html, body {
 
 #place-list {
     /*list-style-type: none;*/
+    padding-top: 15px;
+    float: left;
+    width: 80%;
 }
 
 .place-item {
@@ -45,17 +65,6 @@ html, body {
 
 li.ui-sortable-helper {
     cursor: move;
-}
-
-#search {
-    position: absolute;
-    display: none;
-    width: 400px;
-    top: 0px;
-    left: 50px;
-    height: 100px;
-    background-color: rgba(239, 239, 239, 0.8);
-    z-index: 11;
 }
 
 /* numbered map markers */
@@ -75,15 +84,25 @@ li.ui-sortable-helper {
     text-align: center;
 }
 
+
 .delete-button {
     float: right;
     margin-right 10px;
+    transition: color 0.5s ease;
 }
 
-.fork-button {
+.delete-button:hover {
+    color: #E62135;
+}
+
+#fork {
     float: right;
-    margin: 22px 22px 0 0;
-    padding: 4px 14px 4px 14px;
+    /* text-align: center; */
+    /* margin-top: 0px; */
+}
+
+.fork-link {
+    padding-left: 5px !important;
 }
 
 #start {
@@ -135,5 +154,33 @@ li.ui-sortable-helper {
 #show-routing-container {
     position: absolute;
     top: 12px;
-    right: 5px;
+    right: 10px;
+}
+
+/* pure css shit // pure */
+
+
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-error {
+    background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-warning {
+    background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221); /* this is a light blue */
 }

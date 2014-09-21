@@ -15,7 +15,7 @@ function forkItinerary() {
             // and I think everything else just works via URL
             // the one thing to update is the "Forked from" text
             //
-            $('div#fork').html('<a class="fork-link" href="/id/' + fork['parent'] + '">Forked from @' + fork['parent'] + '</a>');
+            $('div#fork').html('<a class="fork-link" href="/id/' + fork['parent'] + '"> @' + fork['parent'] + '</a>');
         }, 'json'); 
     });
 }
@@ -25,6 +25,9 @@ function getParseId() {
     if (url.indexOf("/id/") > -1) {
         url = url.split('/');
         var daId = url[4];
+        if (daId.indexOf('#') > -1) {
+            daId = daId.substring(0, daId.length - 1)
+        }
         return daId;
     }
 }
@@ -32,18 +35,19 @@ function getParseId() {
 // updates the place list for the given parseid
 function updatePlaceList(parseid) {
     placeList = $('ol#place-list')
+    liList = $('li.place-item');
     $.get('/itinerary/' + parseid,
         function(data) {
             if (data['parent']) { // our list is a fork, so we need to indicate that somewhere
                 console.log('PARENT')
-                $('div#fork').html('<a class="fork-link" href="/id/' + data['parent'] + '">Forked from @' + data['parent'] + '</a>');
+                $('div#fork').html('<a class="fork-link" href="/id/' + data['parent'] + '">@' + data['parent'] + '</a>');
             }
             console.log("received list of places:");
             console.log(data);
             var places = data['itinerary'];
             for(i in places) {
                 console.log(places[i].name);
-                placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '<button class="delete-button" onclick="removePlace(' + parseInt(i) + ')">X</button></li>');
+                placeList.append("<li data-json='"+JSON.stringify(places[i])+"' class='place-item'>" + places[i].name + '<span class="delete-button" onclick="removePlace(' + parseInt(i) + ')"><i class="fa fa-trash"></i></button></li>');
                 addPlaceToMap(places[i], (parseInt(i)+1), true);
             }
         });
@@ -113,7 +117,7 @@ $(function() {
                 showRouting = 0;
             }
         });
-    }, 1000);
+    }, 2500);
 });
 
 

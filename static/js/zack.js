@@ -27,8 +27,7 @@ if (document.URL.indexOf('/id/') === -1) {
             , "lon": newData['lon']
             , "name": newName
           };
-
-          placeList.append("<li data-json='" + JSON.stringify(jsonArr) + "' class='place-item'>" + newName + '<button class="delete-button" onclick="removePlace(' + parseInt(liList.length) + ')">X</button></li>');
+            placeList.append("<li data-json='" + JSON.stringify(jsonArr) + "' class='place-item'>" + newName + '<button class="delete-button" onclick="removePlace(' + parseInt(liList.length) + ')"><i class="fa fa-trash"></i></button></li>');
           var newMarker = newData;
           newMarker['name'] = newName;
           addPlaceToMap(newMarker, parseInt(liList.length)+1, true);
