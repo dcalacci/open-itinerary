@@ -1,3 +1,51 @@
+// route-based recommendations
+
+// retrieves the route coordinates
+function getRouteCoordinates() {
+    return control['_routes'][0]['coordinates']
+}
+
+// samples 0.2 of total route coordinates
+function sampleRouteCoordinates() {
+    pairs = getRouteCoordinates();
+    numSamples = parseInt(pairs.length * .2);
+    samples = _.sample(pairs, numSamples);
+    return samples
+}
+
+
+//TODO:
+// favor points closer to midpoint between waypoints
+// more even distribution of sampled locations along route
+
+// grabs some sampling of recommendations from those points
+function getRecommendationsForRoute() {
+    recommendationsLayer.clearLayers();
+    sampleCoords = sampleRouteCoordinates();
+    for(i in sampleCoords) {
+        var lat = sampleCoords[i][0];
+        var lon = sampleCoords[i][1];
+
+        $.get('/recommendation',
+             {'lat': lat,
+             'lon': lon,
+             'radius': 50},
+             function(data) {
+                 venues = data['groups'][0]['items'];
+                 console.log(venues);
+                 venues = _.sample(venues, 1);
+                 for(i in venues) {
+                     console.log("examining" + venues[i]);
+                     addRecommendedPlace(venues[i]['venue']);
+                 }
+             });
+    }
+}
+
+
+
+// waypoint based recommendations
+
 // add the recommendations layer
 var recommendationsLayer = new L.FeatureGroup();
 map.addLayer(recommendationsLayer);
@@ -20,8 +68,8 @@ map.on('popupopen', function() {
                'lon': lon},
               function(data) {
                   venues = data['groups'][0]['items']
-                  console.log("venues::::");
-                  console.log(venues);
+                  // console.log("venues::::");
+                  // console.log(venues);
                   recommendationsLayer.clearLayers();
                   // add new recommendations
                   for(i in venues) {
