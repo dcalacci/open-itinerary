@@ -96,7 +96,22 @@ function removePlace(num) {
 
 }
 
+
+
 $(document).ready(function() {
+
+    // $('#show-routing-container').detach().appendTo('.leaflet-routing-alt h2');
+
+    var showRouting = 0;
+    $("#show-routing-container").click(function() {
+        if (showRouting == 0) {
+            $('.leaflet-routing-container').animate({height: '200px'}, 500);
+            showRouting = 1;
+        } else {
+            $('.leaflet-routing-container').animate({height: '50px'}, 500);
+            showRouting = 0;
+        }
+    });
 
     var url = document.URL;
     if (url.indexOf("/id/") > -1) {
