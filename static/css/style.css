@@ -121,6 +121,14 @@ li.ui-sortable-helper {
     display: none;
 }
 
+/* fork text */
+#fork {
+    text-align: center;
+}
+
+.fork-link {
+    margin: auto;
+}
 #show-routing-container {
     position: absolute;
     top: 12px;

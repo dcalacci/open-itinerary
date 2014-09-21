@@ -1,6 +1,11 @@
 // map javascript
 
-
+// Custom recommendation markers
+var recMarker = L.AwesomeMarkers.icon({
+    icon: 'star',
+    markerColor: 'green',
+    iconColor: 'white'
+});
 
 // Custom numbered markers
 L.NumberedDivIcon = L.Icon.extend({
