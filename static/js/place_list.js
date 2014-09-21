@@ -12,6 +12,8 @@ function forkItinerary() {
             console.log(data);
             window.history.pushState({"pageTitle":"TEST"},"", 'http://' + window.location.hostname + ':5000/id/' + data.objectId);
             // TODO: either force page to refresh here, or make sure all data is changed to refer to new ID
+            // it seems like the data is okay. when forked, adding new places adds them to the child
+            // and I think everything else just works via URL
         }, 'json'); 
     });
 }
