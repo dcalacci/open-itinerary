@@ -1,4 +1,5 @@
 from flask import *
+from reverse_proxied import ReverseProxied
 import fun_requests as f
 import requests
 import recommendations
@@ -6,6 +7,8 @@ import recommendations
 app = Flask(__name__)
 app.config.from_object('config')
 
+# reverse proxy stuff for deployment
+app.wsgi_app = ReverseProxied(app.wsgi_app)
 
 @app.route('/itinerary/create', methods=['POST'])
 def create_itinerary():
