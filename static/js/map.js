@@ -9,7 +9,8 @@ var greenIcon = L.AwesomeMarkers.icon({
 
 L.NumberedDivIcon = L.Icon.extend({
     options: {
-    iconUrl: '/static/images/external/blue-icon.png',
+
+    iconUrl: $STATIC_DIR + '/images/external/blue-icon.png',
     number: '',
     shadowUrl: null,
     iconSize: new L.Point(31, 43),
