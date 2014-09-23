@@ -2,7 +2,7 @@
 
 function forkItinerary() {
     var id = getParseId(); 
-    $.get('/itinerary/' + id, function(data) {
+    $.get($SCRIPT_ROOT + '/itinerary/' + id, function(data) {
         var fork = data;
         
         fork['parent'] = id;
@@ -36,7 +36,7 @@ function getParseId() {
 function updatePlaceList(parseid) {
     placeList = $('ol#place-list')
     liList = $('li.place-item');
-    $.get('/itinerary/' + parseid,
+    $.get($SCRIPT_ROOT + '/itinerary/' + parseid,
         function(data) {
             if (data['parent']) { // our list is a fork, so we need to indicate that somewhere
                 console.log('PARENT')
@@ -82,7 +82,7 @@ function removePlace(num) {
     itin['itinerary'].splice(num, 1);
     console.log(itin);
     if (daId !== undefined) {
-        $.post("/itinerary/" + daId, JSON.stringify(itin), function(data) {
+        $.post($SCRIPT_ROOT + "/itinerary/" + daId, JSON.stringify(itin), function(data) {
             console.log("Saved new itinerary order");
             console.log(data);
         }, "json");
@@ -203,7 +203,7 @@ $(document).ready(function() {
             });
             console.log(itin);
             if (daId !== undefined) {
-                $.post("/itinerary/" + daId, JSON.stringify(itin), function(data) {
+                $.post($SCRIPT_ROOT + "/itinerary/" + daId, JSON.stringify(itin), function(data) {
                     console.log("Saved new itinerary order");
                     console.log(data);
                 }, "json");

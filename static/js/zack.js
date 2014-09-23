@@ -44,7 +44,7 @@ if (document.URL.indexOf('/id/') === -1) {
                   });
               });
 
-              $.post("/itinerary/" + daId, JSON.stringify(itin), function(data) {
+              $.post($SCRIPT_ROOT + "/itinerary/" + daId, JSON.stringify(itin), function(data) {
                   console.log("Saved new itinerary order");
                   console.log(data);
               }, "json");
@@ -61,7 +61,7 @@ if (document.URL.indexOf('/id/') === -1) {
         $('#search').show();
         document.cookie = $('input[name="start-zipcode"]').val();
 
-        $.post('/itinerary/create', JSON.stringify({"itinerary": []}), function(data) {
+          $.post($SCRIPT_ROOT + '/itinerary/create', JSON.stringify({"itinerary": []}), function(data) {
           //document.title = 'http://' + window.location.hostname + '/id/' + data.objectId;
           window.history.pushState({"pageTitle":"TEST"},"", 'http://' + window.location.hostname + ':5000/id/' + data.objectId);
         }, "json");
