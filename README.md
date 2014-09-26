@@ -1,6 +1,6 @@
 Open Itinerary
 ==============
-
+An [Unhackathon 2014](http://www.unhackathon.org/) project.
 
 Open Itinerary is a website that allows users to easily create travel
 itineraries and then share them with friends.
@@ -27,3 +27,19 @@ along the route between their destinations.
  - Enter in a city/state/country instead of a zip code
  - Printable itinerary
  - More info about the suggested places (and maybe a scroll-able list)
+
+# Made With
+ - Flask
+ - jQuery
+ - Angular
+ - Google Geocoder API
+ - leaflet.js
+ - Foursquare API
+
+# Made By
+ - [Dan Calacci](dcalacci.net)
+ - [Zack Hickman](zhickman.com)
+ - [Nat Dempkowski](http://natdempk.io/)
+
+# License
+MIT
