@@ -1,8 +1,6 @@
 Open Itinerary
 ==============
 
-literally just a repo of merge conflicts
-
 
 Todo:
 - Forking of itineraries
