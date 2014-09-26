@@ -5,7 +5,7 @@ An [Unhackathon 2014](http://www.unhackathon.org/) project.
 Open Itinerary is a website that allows users to easily create travel
 itineraries and then share them with friends.
 
-It also allows users to get suggested places existing destinations and
+It also allows users to get suggested places near their existing destinations and
 along the route between their destinations.
 
 
