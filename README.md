@@ -27,6 +27,7 @@ along the route between their destinations.
  - Enter in a city/state/country instead of a zip code
  - Printable itinerary
  - More info about the suggested places (and maybe a scroll-able list)
+ - MOBILE FRIENDLY
 
 # Made With
  - Flask
