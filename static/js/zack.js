@@ -63,7 +63,7 @@ if (document.URL.indexOf('/id/') === -1) {
 
           $.post($SCRIPT_ROOT + '/itinerary/create', JSON.stringify({"itinerary": []}), function(data) {
           //document.title = 'http://' + window.location.hostname + '/id/' + data.objectId;
-          window.history.pushState({"pageTitle":"TEST"},"", 'http://' + window.location.hostname + ':5000/id/' + data.objectId);
+          window.history.pushState({"pageTitle":"TEST"},"", 'http://' + window.location.hostname + '/id/' + data.objectId);
         }, "json");
       });
     });
