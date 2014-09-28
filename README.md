@@ -38,8 +38,8 @@ along the route between their destinations.
  - Foursquare API
 
 # Made By
- - [Dan Calacci](dcalacci.net)
- - [Zack Hickman](zhickman.com)
+ - [Dan Calacci](http://dcalacci.net)
+ - [Zack Hickman](http://zhickman.com)
  - [Nat Dempkowski](http://natdempk.io/)
 
 # License
